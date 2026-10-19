@@ -25,3 +25,10 @@ jobs:
 
       - name: Train and test model
         run: python src/train_model.py
+
+      - name: Save trained ML model
+        uses: actions/upload-artifact@v4
+        with:
+          name: heatsafe-trained-model
+          path: models/heatsafe_live_improved_model.pkl
+          if-no-files-found: error

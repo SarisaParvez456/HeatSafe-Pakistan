@@ -24,7 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install prefect requests pandas scikit-learn joblib
 
-      - name: Run Prefect live prediction flow
+      - name: Run Prefect Cloud live prediction
+        env:
+          PREFECT_API_KEY: ${{ secrets.PREFECT_API_KEY }}
+          PREFECT_API_URL: ${{ secrets.PREFECT_API_URL }}
         run: python flows/live_weather_flow.py
 
       - name: Save live prediction

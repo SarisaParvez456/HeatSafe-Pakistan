@@ -25,6 +25,20 @@ nasa = pd.read_csv(NASA_FILE)
 meteo["time"] = pd.to_datetime(meteo["time"], utc=True)
 nasa["time"] = pd.to_datetime(nasa["time"], utc=True)
 
+# Rename original API columns to our project column names
+
+meteo = meteo.rename(columns={
+    "temperature_2m": "meteo_temperature",
+    "relative_humidity_2m": "meteo_humidity",
+    "wind_speed_10m": "meteo_wind_speed"
+})
+
+nasa = nasa.rename(columns={
+    "T2M": "nasa_temperature",
+    "RH2M": "nasa_humidity",
+    "WS2M": "nasa_wind_speed"
+})
+
 # 3. Check expected columns
 meteo_columns = [
     "time",

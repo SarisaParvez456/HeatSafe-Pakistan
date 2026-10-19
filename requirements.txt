@@ -18,6 +18,9 @@ retry-requests
 # Automated pipeline
 prefect
 
+# database
+duckdb
+
 # Dashboard
 gradio
 plotly

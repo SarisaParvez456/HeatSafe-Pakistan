@@ -20,13 +20,14 @@ jobs:
       - name: Install required libraries
         run: |
           python -m pip install --upgrade pip
-          pip install prefect requests
+          pip install prefect requests pandas scikit-learn joblib
 
-      - name: Run Prefect live-weather flow
+      - name: Run Prefect live prediction flow
         run: python flows/live_weather_flow.py
 
-      - name: Save weather output
+      - name: Save live prediction
         uses: actions/upload-artifact@v4
         with:
-          name: heatsafe-live-weather
-          path: outputs/latest_weather.json
+          name: heatsafe-live-prediction
+          path: outputs/latest_prediction.json
+          if-no-files-found: error

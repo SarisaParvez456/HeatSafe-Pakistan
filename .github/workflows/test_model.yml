@@ -20,5 +20,8 @@ jobs:
       - name: Install libraries
         run: pip install -r requirements.txt
 
+      - name: Build cleaned and processed data
+        run: python src/data_pipeline.py
+
       - name: Train and test model
         run: python src/train_model.py

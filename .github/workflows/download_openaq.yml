@@ -1,0 +1,38 @@
+
+name: Download OpenAQ Karachi
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  download-openaq:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Download Karachi PM2.5
+        env:
+          OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+        run: python src/download_openaq.py
+
+      - name: Save downloaded data
+        uses: actions/upload-artifact@v4
+        with:
+          name: openaq-karachi-pm25
+          path: |
+            data/raw/openaq_karachi_pm25.csv
+            data/raw/openaq_karachi_metadata.json
+          if-no-files-found: error

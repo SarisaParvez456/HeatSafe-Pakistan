@@ -20,13 +20,19 @@ jobs:
       - name: Install required libraries
         run: pip install pandas numpy duckdb "pandera[pandas]"
 
+      - name: Run make data
+        run: make data
+
+      - name: Run Data Quality Agent
+        run: python src/data_quality_agent.py
+
       - name: Save data quality evidence
         uses: actions/upload-artifact@v4
         with:
           name: heatsafe-data-quality
           path: outputs/data_quality/
           if-no-files-found: error
-        
+
       - name: Generate manifest
         run: python src/create_manifest.py
 

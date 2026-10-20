@@ -86,7 +86,11 @@ combined = pd.merge(
 )
 
 combined = combined.sort_values("time").reset_index(drop=True)
-
+# Stable identifier shared by cleaned and processed data.
+# Karachi weather records are uniquely identified by UTC hour.
+combined["row_id"] = (
+    "KHI_" + combined["time"].dt.strftime("%Y%m%dT%H%M%SZ")
+)
 if combined.empty:
     raise ValueError("No matching timestamps between datasets")
 

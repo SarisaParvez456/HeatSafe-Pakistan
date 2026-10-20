@@ -14,32 +14,45 @@ def calculate_sha256(filename):
     return digest.hexdigest()
 
 
-with open("manifest.csv", encoding="utf-8-sig", newline="") as file:
-    reader = csv.DictReader(file)
+manifest_path = Path("manifest.csv")
 
-    if reader.fieldnames is None:
-        raise ValueError("manifest.csv is empty")
+if not manifest_path.exists():
+    raise FileNotFoundError("manifest.csv is missing")
 
-    reader.fieldnames = [
-        name.strip() for name in reader.fieldnames
+with open(manifest_path, encoding="utf-8-sig", newline="") as file:
+    # Ignore empty lines before the header
+    nonempty_lines = [
+        line for line in file
+        if line.strip()
     ]
 
-    required = {"file", "source", "query", "fetch_time", "sha256", "licence"}
+if not nonempty_lines:
+    raise ValueError("manifest.csv is empty")
 
-    missing = required - set(reader.fieldnames)
+reader = csv.DictReader(nonempty_lines)
 
-    if missing:
-        raise ValueError(
-            f"Missing manifest columns: {sorted(missing)}. "
-            f"Found: {reader.fieldnames}"
-        )
+reader.fieldnames = [
+    name.strip() for name in reader.fieldnames
+]
 
-    records = list(reader)
+required = {
+    "file", "source", "query",
+    "fetch_time", "sha256", "licence"
+}
 
+missing = required - set(reader.fieldnames)
+
+if missing:
+    raise ValueError(
+        f"Missing columns: {sorted(missing)}. "
+        f"Found: {reader.fieldnames}. "
+        f"First line: {nonempty_lines[0]!r}"
+    )
+
+records = list(reader)
 
 if not records:
     raise ValueError("Manifest contains no data rows")
-
 
 for record in records:
     filename = record["file"].strip()
@@ -51,11 +64,8 @@ for record in records:
     actual_hash = calculate_sha256(filename)
 
     if actual_hash != expected_hash:
-        raise ValueError(
-            f"SHA-256 mismatch for {filename}"
-        )
+        raise ValueError(f"SHA-256 mismatch: {filename}")
 
     print(f"PASS: {filename}")
-
 
 print("All raw files match the manifest!")

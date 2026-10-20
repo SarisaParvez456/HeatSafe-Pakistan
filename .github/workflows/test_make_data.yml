@@ -22,3 +22,13 @@ jobs:
 
       - name: Run make data
         run: make data
+        
+      - name: Generate manifest
+        run: python src/create_manifest.py
+
+      - name: Save manifest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: heatsafe-manifest
+          path: manifest.csv
+          if-no-files-found: error

@@ -1,0 +1,21 @@
+
+name: Check OpenAQ Manifest
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Calculate OpenAQ hash and metadata
+        run: python src/check_openaq_manifest.py

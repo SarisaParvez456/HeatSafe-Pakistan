@@ -25,7 +25,9 @@ jobs:
 
       - name: Build DuckDB warehouse
         run: python src/build_warehouse.py
-
+        
+      - name: Generate data manifest
+        run: python src/create_manifest.py
       - name: Save database artifact
         uses: actions/upload-artifact@v4
         with:

@@ -22,12 +22,13 @@ def main():
     with open("manifest.csv", "w", newline="") as file:
         writer = csv.writer(file)
         writer.writerow([
-            "file", "source", "query", "fetch_time",
-            "sha256", "licence"
+            "file", "source", "query",
+            "fetch_time", "sha256", "licence"
         ])
 
         for filename, source in RAW_FILES:
             path = Path(filename)
+
             if not path.exists():
                 raise FileNotFoundError(filename)
 
@@ -35,14 +36,14 @@ def main():
                 filename,
                 source,
                 "Karachi hourly weather, 2022-01-01 to 2026-09-30",
-                "",  # Original fetch time must be verified
+                "",  # Original fetch time not yet verified
                 sha256_file(path),
                 "TO_VERIFY"
             ])
 
     print("manifest.csv created successfully!")
     print(f"Manifest generated at: {timestamp}")
-    print("Note: Original fetch times and licences still need verification.")
+    print("Original fetch times and licences still need verification.")
 
 if __name__ == "__main__":
     main()

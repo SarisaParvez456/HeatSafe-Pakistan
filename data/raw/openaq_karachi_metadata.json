@@ -7,6 +7,9 @@
   "query_end_utc": "2026-10-21T00:00:00Z",
   "fetched_at_utc": "2026-10-20T16:06:50.439928+00:00",
   "row_count": 461,
-  "units": "TO_VERIFY",
-  "licence": "TO_VERIFY"
+  "units": "µg/m³",
+  "licence": "CC BY 4.0",
+  "data_provider": "AirGradient",
+  "station_owner": "The Urban Unit",
+  "attribution": "OpenAQ, AirGradient, and The Urban Unit"
 }

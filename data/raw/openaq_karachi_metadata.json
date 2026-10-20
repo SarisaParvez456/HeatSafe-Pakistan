@@ -1,0 +1,12 @@
+{
+  "source": "OpenAQ API v3",
+  "endpoint": "https://api.openaq.org/v3/sensors/13368464/hours",
+  "sensor_id": 13368464,
+  "station": "Urban Resource Center",
+  "query_start_utc": "2026-10-01T00:00:00Z",
+  "query_end_utc": "2026-10-21T00:00:00Z",
+  "fetched_at_utc": "2026-10-20T16:06:50.439928+00:00",
+  "row_count": 461,
+  "units": "TO_VERIFY",
+  "licence": "TO_VERIFY"
+}

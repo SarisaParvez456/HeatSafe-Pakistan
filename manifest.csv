@@ -2,3 +2,4 @@
 file,source,query,fetch_time,sha256,licence
 data/raw/open_meteo_karachi_2022_2026.csv,Open-Meteo,"Karachi hourly weather, 2022-01-01 to 2026-09-30",2026-10-19T19:58:02+05:00,ecadaebf7d9b1d694c3e6abe76f5b64a3a3bc0dc1082d53e6162aefaab348c02,CC BY 4.0
 data/raw/nasa_power_karachi_2022_2026.csv,NASA POWER,"Karachi hourly weather, 2022-01-01 to 2026-09-30",2026-10-19T19:54:32+05:00,db4248ce2a60780989d2c4c507c4f5085170883ee7d2d0746a1fa295dad72516,Open data - attribution requested
+data/raw/openaq_karachi_pm25.csv,OpenAQ API v3,https://api.openaq.org/v3/sensors/13368464/hours?datetime_from=2026-10-01T00:00:00Z&datetime_to=2026-10-21T00:00:00Z,2026-10-20T16:06:50.439928+00:00,06ca2f3d4204abd4701a8f4905c0f0f248be76358e80fb083f5628d45d4f2441,TO_VERIFY

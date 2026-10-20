@@ -9,8 +9,8 @@ DATABASE_PATH = Path("data/heatsafe.duckdb")
 DATASETS = {
     "raw_open_meteo": "data/raw/open_meteo_karachi_2022_2026.csv",
     "raw_nasa_power": "data/raw/nasa_power_karachi_2022_2026.csv",
-    "cleaned_weather": "data/cleaned/heatsafe_processed_weather.csv",
-    "processed_weather": "data/processed/heatsafe_ml_dataset.csv",
+    "cleaned_weather": "data/cleaned/heatsafe_cleaned_weather.csv",
+    "processed_weather": "data/processed/heatsafe_processed_weather.csv",
 }
 
 

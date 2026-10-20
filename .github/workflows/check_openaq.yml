@@ -1,0 +1,36 @@
+
+name: Check OpenAQ Karachi
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-openaq:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Check Karachi PM2.5 stations
+        env:
+          OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+        run: python src/check_openaq.py
+
+      - name: Save station results
+        uses: actions/upload-artifact@v4
+        with:
+          name: openaq-karachi-check
+          path: openaq_karachi_check.json
+          if-no-files-found: error

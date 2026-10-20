@@ -18,10 +18,14 @@ jobs:
           python-version: "3.11"
 
       - name: Install required libraries
-        run: pip install pandas numpy duckdb
+        run: pip install pandas numpy duckdb "pandera[pandas]"
 
-      - name: Run make data
-        run: make data
+      - name: Save data quality evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: heatsafe-data-quality
+          path: outputs/data_quality/
+          if-no-files-found: error
         
       - name: Generate manifest
         run: python src/create_manifest.py

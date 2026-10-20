@@ -4,7 +4,7 @@ name: Test HeatSafe Live Weather
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "17 * * * *"
 
 jobs:
   test-live-weather:

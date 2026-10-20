@@ -1,3 +1,4 @@
+
 file,source,query,fetch_time,sha256,licence
-data/raw/open_meteo_karachi_2022_2026.csv,Open-Meteo,"Karachi hourly weather, 2022-01-01 to 2026-09-30",,ecadaebf7d9b1d694c3e6abe76f5b64a3a3bc0dc1082d53e6162aefaab348c02,TO_VERIFY
-data/raw/nasa_power_karachi_2022_2026.csv,NASA POWER,"Karachi hourly weather, 2022-01-01 to 2026-09-30",,db4248ce2a60780989d2c4c507c4f5085170883ee7d2d0746a1fa295dad72516,TO_VERIFY
+data/raw/open_meteo_karachi_2022_2026.csv,Open-Meteo,"Karachi hourly weather, 2022-01-01 to 2026-09-30",2026-10-19T19:58:02+05:00,ecadaebf7d9b1d694c3e6abe76f5b64a3a3bc0dc1082d53e6162aefaab348c02,TO_VERIFY
+data/raw/nasa_power_karachi_2022_2026.csv,NASA POWER,"Karachi hourly weather, 2022-01-01 to 2026-09-30",2026-10-19T19:54:32+05:00,db4248ce2a60780989d2c4c507c4f5085170883ee7d2d0746a1fa295dad72516,TO_VERIFY

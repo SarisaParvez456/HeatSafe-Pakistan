@@ -1,6 +1,9 @@
 name: Extend Karachi Weather 2020-2021
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - weather-50k-test
 permissions:
   contents: write
 jobs:

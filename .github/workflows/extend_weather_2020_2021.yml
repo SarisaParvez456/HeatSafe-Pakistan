@@ -1,0 +1,24 @@
+name: Extend Karachi Weather 2020-2021
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extend-weather:
+    if: github.ref_name == 'weather-50k-test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy requests
+      - run: python scripts/extend_weather_2020_2021.py
+      - name: Commit validated data to testing branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/raw/open_meteo_karachi_2022_2026.csv data/raw/nasa_power_karachi_2022_2026.csv data/cleaned/heatsafe_cleaned_weather.csv data/processed/heatsafe_processed_weather.csv data/processed/heatsafe_ml_dataset.csv
+          git diff --cached --quiet || (git commit -m 'Extend Karachi weather history to 2020' && git push origin HEAD:weather-50k-test)

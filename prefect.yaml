@@ -7,7 +7,7 @@ push: null
 
 pull:
   - prefect.deployments.steps.git_clone:
-      repository: https://github.com/REPLACE_WITH_USERNAME/HeatSafe-Pakistan.git
+      repository: https://github.com/SarisaParvez456/HeatSafe-Pakistan.git
       branch: main
 
 deployments:
